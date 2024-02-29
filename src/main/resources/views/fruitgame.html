@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fruit Ninja</title>
+  <style>
+    /* 样式表 */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background-color: #def;
+    }
+    .fruit {
+      position: absolute;
+      width: 100px; /* 默认宽度 */
+      height: 100px; /* 默认高度 */
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- 游戏板块 -->
+</div>
+<script>
+  // JavaScript 代码
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.container');
+
+    // 生成水果
+    function createFruit() {
+      if (container.childElementCount >= 10) {
+        gameOver();
+        return;
+      }
+
+      for (let i = 0; i < 2; i++) {
+        const fruit = document.createElement('img');
+        fruit.src = 'fruit.png'; // 替换成水果图片的路径
+        fruit.className = 'fruit';
+        fruit.style.top = `${Math.random() * 90}%`; // 随机生成水果的垂直位置
+        fruit.style.left = `${Math.random() * 90}%`; // 随机生成水果的水平位置
+        fruit.style.transform = `rotate(${Math.random() * 360}deg)`; // 随机旋转水果
+
+        fruit.addEventListener('click', () => {
+          container.removeChild(fruit); // 点击水果时移除水果
+        });
+
+        container.appendChild(fruit);
+      }
+    }
+
+    // 游戏失败
+    function gameOver() {
+      alert('Game Over! Too many fruits on the screen.');
+      // 进行其他游戏失败处理
+    }
+
+    // 每隔一段时间生成水果
+    setInterval(createFruit, 2000);
+  });
+</script>
+</body>
+</html>

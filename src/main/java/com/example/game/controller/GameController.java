@@ -14,8 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class GameController {
 
     @GetMapping("/2048")
-    public String home() {
+    public String game_2048() {
         return "2048game"; // 返回Thymeleaf模板的名称，这里对应index.html
+    }
+
+    @GetMapping("/2048_2")
+    public String game_2048phone() {
+        return "2048gamephone"; // 返回Thymeleaf模板的名称，这里对应index.html
     }
 
 }
