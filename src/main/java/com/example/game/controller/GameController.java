@@ -23,4 +23,9 @@ public class GameController {
         return "2048gamephone"; // 返回Thymeleaf模板的名称，这里对应index.html
     }
 
+    @GetMapping("/fruit")
+    public String game_fruit() {
+        return "fruitgame"; // 返回Thymeleaf模板的名称，这里对应index.html
+    }
+
 }
